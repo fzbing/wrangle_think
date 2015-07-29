@@ -1,0 +1,13 @@
+{
+    "name": "fzbing/wrangle",
+    "authors": [
+        {
+            "name": "fzbing",
+            "email": "1083418227@qq.com"
+        }
+    ],
+    "require": {
+        "nette/nette": "^2.3",
+        "danielstjules/stringy": "^1.10"
+    }
+}
