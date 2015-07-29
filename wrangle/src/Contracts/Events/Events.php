@@ -5,6 +5,7 @@ interface EventsContainer
 {
     // 带命名空间的时间有必要性吗?
     // 对事件本身的事件控制重要吗?
+    // wildcard 通配符,正则表达式
 
     //on
     //newListener
@@ -28,13 +29,16 @@ interface EventsContainer
     //  在异步执行的情况下,优先更没有谈及的必要性.
     //      它们同时执行
     //更宽泛的一个条件是:监听器执行次数,执行完那么多次后,自动移除.
+
+    //为多个事件绑定多个监听器
     public function on($evnet, $listener);
 
     // 一个应用场景是在一个监听器中绑定另一个事件.
-    public function once($evnet, $listener);
+//    public function once($evnet, $listener);
+    // 起码在PHP单进程运行环境下,应该用处不大
 
-    // listener
-    //  闭包
+    // listener 没有其它类型
+    //  闭包,可调用
     //  字符串,一个类的一个方法. ex.'App\Logic\Post@addVisitNum';这样要依赖与IoC容器,但是这种太常用了.
 
     // 触发一个事件,params 为传递的参数,可选.索引数组,与监听器参数对应
@@ -44,8 +48,8 @@ interface EventsContainer
     // 两个参数,$event的$listener
     // 一个参数 $event的所有监听器
     // 没有参数 所有事件的所有监听器
-    public function removeListener($event, $listener);
-
+    // 移除某事件的一个监听器,也是增强了耦合.
+    public function removeListener($event);
 
     // 有必要要判断一个事件是否要有监听器,这也是一种依赖.是加强了之间的耦合.
     // public function hasListeners($eventName);
@@ -57,4 +61,5 @@ interface EventsContainer
 
     //对于一个事件本身来说.要有
     // 触发时间,触发者,
+    // 可能根据不同的属性,而多态
 }
