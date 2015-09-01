@@ -31,7 +31,7 @@ interface EventsContainer
     //更宽泛的一个条件是:监听器执行次数,执行完那么多次后,自动移除.
 
     //为多个事件绑定多个监听器
-    public function on($evnet, $listener);
+    public function on($events, $listener);
 
     // 一个应用场景是在一个监听器中绑定另一个事件.
 //    public function once($evnet, $listener);
@@ -42,7 +42,7 @@ interface EventsContainer
     //  字符串,一个类的一个方法. ex.'App\Logic\Post@addVisitNum';这样要依赖与IoC容器,但是这种太常用了.
 
     // 触发一个事件,params 为传递的参数,可选.索引数组,与监听器参数对应
-    public function emit($event, $params);
+    public function emit($event, $args=[]);
 
     // 移除监听器,
     // 两个参数,$event的$listener
